@@ -1,0 +1,15 @@
+{
+    "name": "youcode/mvc_creation",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yassine El hassani",
+            "email": "yassine.ds.404@gmail.com"
+        }
+    ],
+    "require": {}
+}
