@@ -14,7 +14,10 @@ class UserController {
     }
 
     public function register() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //     echo"wach";
             
             $user = new User;
            
@@ -23,7 +26,7 @@ class UserController {
             $registerMessage = $user->register();
          
             require 'app/View/register.php';
-        }
+        // }
     }
 }
 

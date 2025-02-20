@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Model;
-use Database;
+
+use App\Config\Database;
+
+
+
 
 class User {
     private $name;

@@ -1,11 +1,13 @@
 <?php
 
+namespace App\Config;
+
 class Database {
 
     private static $pdo=null;
 
     public static function connect() {
-        $dotenv = \Dotenv\Dotenv::createImmutable(realpath($_SERVER["DOCUMENT_ROOT"] . '/../'));
+        $dotenv = \Dotenv\Dotenv::createImmutable(realpath($_SERVER["DOCUMENT_ROOT"] . '/../../'));
         $dotenv->load();
         $host = $_ENV['DB_HOST'];
         $db = $_ENV['DB_NAME'];
