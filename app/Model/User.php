@@ -4,11 +4,11 @@ namespace App\Model;
 use App\Config\Database;
 
 class User {
+    
     private $name;
     private $email;
     private $password;
     private $conn;
-  
    
     public function __construct() {
       $this->conn = Database::getConnection();
@@ -20,22 +20,19 @@ class User {
       $this->email = $email;
       $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
-  
-  
+
     public function register() {
-   
-        $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
-        $stmt = $this->conn->prepare($sql);
-  
+        $stmt = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
         $stmt->bindParam(':name', $this->name);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-  
-        if ($stmt->execute()) {
-            header('location: app/View/login.php');
-        } else {
-            return "User registration failed!";
-        }
-      
+        return $stmt->execute();
     }
-  }
+
+    public function getUsers() {
+        $stmt = $this->conn->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+}

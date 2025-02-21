@@ -21,8 +21,12 @@ class UserController {
             $user->setDetails($_POST['name'], $_POST['email'], $_POST['password']);
         
             $registerMessage = $user->register();
-         
-            require 'app/View/register.php';
+
+            if($registerMessage) {
+                header('location: app/View/login.php');exit;
+            } else {
+                return "User registration failed!";
+            }
         }else{
             require 'app/View/register.php';
         }
