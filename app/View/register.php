@@ -18,7 +18,7 @@
         <input type="email" name="email" placeholder="Your Email" required>
         <input type="password" name="password" placeholder="Your Password" required>
         <button type="submit">Register</button>
-    </form>
+    </form >
 
 </body>
 </html>

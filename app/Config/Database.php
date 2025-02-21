@@ -4,31 +4,17 @@ namespace App\Config;
 
 class Database {
 
-    private static $pdo=null;
+    private static $instance = null;
+    private $pdo;
 
-    public static function connect() {
-        $dotenv = \Dotenv\Dotenv::createImmutable(realpath($_SERVER["DOCUMENT_ROOT"] . '/../../'));
-        $dotenv->load();
-        $host = $_ENV['DB_HOST'];
-        $db = $_ENV['DB_NAME'];
-        $user = $_ENV['DB_USER'];
-        $pass = $_ENV['DB_PASSWORD'];
-        $port = $_ENV['PORT'];
-        
-        $dsn = "pgsql:host={$host};dbname={$db};port={$port}";
-        try {
-            self::$pdo = new \PDO($dsn, $user, $pass);
-        } catch (\PDOException $e) {
-            $error = $e->getMessage();
-            echo $error;
-        }
+    public function __construct() {
+        $this->pdo = new \PDO("mysql:host=localhost;dbname=blog_mvc", "root", "");
     }
 
     public static function getConnection() {
-        if(self::$pdo == null) {
-            self::connect();
+        if (self::$instance === null) {
+            self::$instance = new database();
         }
-        
-        return self::$pdo;
+        return self::$instance->pdo;
     }
 }
