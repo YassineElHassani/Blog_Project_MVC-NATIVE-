@@ -1,5 +1,5 @@
 -- Create Database
-CREATE DATABASE blog_mvc;^
+CREATE DATABASE blog_mvc;
 
 USE blog_mvc;
 -- Create Users Table
