@@ -6,7 +6,7 @@ use App\Model\User;
 
 class UserController {
     public function index() {
-        echo "User Index";
+        require 'app/View/index.php';
     }
 
     public function login() {
@@ -31,7 +31,6 @@ class UserController {
             require 'app/View/register.php';
         }
     }
-
 }
 
 
