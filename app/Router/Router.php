@@ -2,12 +2,17 @@
 
 namespace App\Router;
 
+use App\Controller\DashboardController;
+use App\Controller\UserController;
+
 class Router {
     private $routes = [
-        '/' => ['App\Controller\UserController', 'index'],
-        '/login' => ['App\Controller\UserController', 'login'],
-        '/register' => ['App\Controller\UserController', 'register'],
-        '/dashboard' => ['App\Controller\DashboardController', 'index']
+        '/' => [UserController::class, 'index'],
+        '/login' => [UserController::class, 'login'],
+        '/register' => [UserController::class, 'register'],
+        '/dashboard' => [DashboardController::class, 'index'],
+        '/users' => [DashboardController::class, 'users'],
+        '/createArticles' => [DashboardController::class, 'createArticles']
     ];
 
     public function dispatch($uri) {
