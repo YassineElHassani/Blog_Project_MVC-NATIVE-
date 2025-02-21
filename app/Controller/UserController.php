@@ -6,30 +6,15 @@ use App\Model\User;
 
 class UserController {
     public function index() {
-  echo"wach";
+        echo "User Index";
     }
 
     public function login() {
-        echo "User Login";
+        require 'app/View/login.php';
     }
 
     public function register() {
-
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // //     echo"wach";
-            
-            $user = new User;
-           
-            $user->setDetails($_POST['name'], $_POST['email'], $_POST['password']);
-        
-            $registerMessage = $user->register();
-         
-            require 'app/View/register.php';
-        }else{
-            require 'app/View/register.php';
-            // echo 'noo'; 
-        }
+        echo "User Register";
     }
 }
 

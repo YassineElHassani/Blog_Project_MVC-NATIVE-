@@ -10,8 +10,5 @@
             "name": "Yassine El hassani",
             "email": "yassine.ds.404@gmail.com"
         }
-    ],
-    "require": {
-        "vlucas/phpdotenv": "^5.6"
-    }
+    ]
 }

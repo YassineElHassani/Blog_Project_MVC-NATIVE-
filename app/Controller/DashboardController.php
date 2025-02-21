@@ -5,7 +5,7 @@ namespace App\Controller;
 class DashboardController {
     
     public function index() {
-        echo "FFF";
+        require 'app/View/dashboard.php';
     }
 
     
