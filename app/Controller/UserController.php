@@ -14,8 +14,9 @@ class UserController {
     }
 
     public function register() {
-        echo "User Register";
+        require 'app/View/register.php';
     }
+
 }
 
 
