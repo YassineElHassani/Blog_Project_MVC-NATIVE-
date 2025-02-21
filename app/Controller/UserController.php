@@ -6,11 +6,11 @@ use App\Model\User;
 
 class UserController {
     public function index() {
-        echo"wach";
+        require 'app/View/index.php';
     }
 
     public function login() {
-        echo "User Login";
+        require 'app/View/login.php';
     }
 
     public function register() {
