@@ -1,31 +1,38 @@
 <?php
 
 namespace App\Model;
-use Database;
+use App\Config\Database;
 
 class User {
-    private $pdo;
-
+    
+    private $name;
+    private $email;
+    private $password;
+    private $conn;
+   
     public function __construct() {
-        $this->pdo = Database::getConnection();
+      $this->conn = Database::getConnection();
+    }
+  
+   
+    public function setDetails($name, $email, $password) {
+      $this->name = $name;
+      $this->email = $email;
+      $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
-    public function login_user($email, $password) {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->execute([
-            ":email" => $email
-        ]);
-        return $stmt->fetch();
+    public function register() {
+        $stmt = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', $this->password);
+        return $stmt->execute();
     }
 
-    public function register_user($name, $email, $password, $role) {
-        $stmt = $this->pdo->prepare("INSERT INTO users (name, email, password, role) VALUES (:name, :email, :password, :role)");
-        return $stmt->execute([
-            ":name" => $name,
-            ":email" => $email,
-            ":password" => $password,
-            ":role" => $role
-        ]);
+    public function getUsers() {
+        $stmt = $this->conn->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
 }
